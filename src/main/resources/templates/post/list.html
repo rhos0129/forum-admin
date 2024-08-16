@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>forum-admin</title>
+</head>
+<body>
+    <h1>forum admin</h1>
+    <a href="/admin/post/create">추가</a>
+    <ul>
+        <li th:each="post : ${posts}">
+            <p th:text="'[' + ${post.id} + '] ' + ${post.title} + ' | ' + ${post.content}"></p>
+            <form th:action="@{/admin/post/delete/{id}(id=${post.id})}" method="post">
+                <button type="submit">삭제</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>
